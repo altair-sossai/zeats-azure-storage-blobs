@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeats.Azure.Storage.Blobs", "Zeats.Azure.Storage.Blobs\Zeats.Azure.Storage.Blobs.csproj", "{F602585C-7C0C-4B28-81F8-D739419EC267}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeats.Azure.Storage.Blobs.UnitTest", "Zeats.Azure.Storage.Blobs.UnitTest\Zeats.Azure.Storage.Blobs.UnitTest.csproj", "{F888423A-819F-4CA4-93BD-43E7D6C7E7CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".devops", ".devops", "{ACBCC9EC-7A07-4BB7-9224-D1FDEE04FC62}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F602585C-7C0C-4B28-81F8-D739419EC267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F602585C-7C0C-4B28-81F8-D739419EC267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F602585C-7C0C-4B28-81F8-D739419EC267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F602585C-7C0C-4B28-81F8-D739419EC267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F888423A-819F-4CA4-93BD-43E7D6C7E7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F888423A-819F-4CA4-93BD-43E7D6C7E7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F888423A-819F-4CA4-93BD-43E7D6C7E7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F888423A-819F-4CA4-93BD-43E7D6C7E7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE18C318-7D03-4799-BA3B-A551EFB23753}
+	EndGlobalSection
+EndGlobal
