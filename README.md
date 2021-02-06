@@ -6,7 +6,7 @@
 
 # zeats-azure-storage-blobs
 
-Extensions to facilitate AutoMapper use
+Extensions to facilitate Azure Blobs use
 
 [![Build Status](https://dev.azure.com/zeats/Zeats/_apis/build/status/build-zeats-azure-storage-blobs?branchName=master)](https://dev.azure.com/zeats/Zeats/_build/latest?definitionId=45&branchName=master)
 [![NuGet](https://img.shields.io/nuget/v/Zeats.Azure.Storage.Blobs.svg)](https://www.nuget.org/packages/Zeats.Azure.Storage.Blobs)
