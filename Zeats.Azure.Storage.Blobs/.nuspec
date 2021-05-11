@@ -10,7 +10,7 @@
     <iconUrl>https://zeatsbalancaautomatica.blob.core.windows.net/icons/nuget.png</iconUrl>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Azure.Storage.Blobs" version="12.8.0" exclude="Build,Analyzers" />
+        <dependency id="Azure.Storage.Blobs" version="12.8.3" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="3.1.11" exclude="Build,Analyzers" />
       </group>
     </dependencies>
