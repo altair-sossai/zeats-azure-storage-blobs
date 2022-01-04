@@ -1,14 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Zeats.Azure.Storage.Blobs.UnitOfWork;
-
-public static class UnitOfWorkAzureStorageBlobsDependencyInjection
+namespace Zeats.Azure.Storage.Blobs.UnitOfWork
 {
-    public static IServiceCollection AddUnitOfWorkAzureStorageBlobs(this IServiceCollection serviceCollection, string connectionString)
+    public static class UnitOfWorkAzureStorageBlobsDependencyInjection
     {
-        serviceCollection
-            .AddScoped(s => new UnitOfWorkAzureStorageBlobs(connectionString));
+        public static IServiceCollection AddUnitOfWorkAzureStorageBlobs(this IServiceCollection serviceCollection, string connectionString)
+        {
+            serviceCollection
+                .AddScoped(s => new UnitOfWorkAzureStorageBlobs(connectionString));
 
-        return serviceCollection;
+            return serviceCollection;
+        }
     }
 }

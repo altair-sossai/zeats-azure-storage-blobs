@@ -3,40 +3,41 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Zeats.Azure.Storage.Blobs.UnitOfWork;
 using Zeats.Azure.Storage.Blobs.UnitTest.Factories;
 
-namespace Zeats.Azure.Storage.Blobs.UnitTest.UnitOfWork;
-
-[TestClass]
-public class UnitOfWorkAzureStorageBlobsTest
+namespace Zeats.Azure.Storage.Blobs.UnitTest.UnitOfWork
 {
-    private UnitOfWorkAzureStorageBlobs _unitOfWork;
-
-    [TestInitialize]
-    public void Initialize()
+    [TestClass]
+    public class UnitOfWorkAzureStorageBlobsTest
     {
-        _unitOfWork = UnitOfWorkAzureStorageBlobsFactory.New();
-    }
+        private UnitOfWorkAzureStorageBlobs _unitOfWork;
 
-    [TestMethod]
-    public async Task CreateBlobContainerAsync()
-    {
-        var blobContainerClient = await _unitOfWork.CreateBlobContainerIfNotExistsAsync("unit-test");
+        [TestInitialize]
+        public void Initialize()
+        {
+            _unitOfWork = UnitOfWorkAzureStorageBlobsFactory.New();
+        }
 
-        Assert.IsNotNull(blobContainerClient);
-    }
+        [TestMethod]
+        public async Task CreateBlobContainerAsync()
+        {
+            var blobContainerClient = await _unitOfWork.CreateBlobContainerIfNotExistsAsync("unit-test");
 
-    [TestMethod]
-    public async Task GetBlobContainerClient()
-    {
-        var blobContainerClient = _unitOfWork.GetBlobContainerClient("unit-test");
+            Assert.IsNotNull(blobContainerClient);
+        }
 
-        Assert.IsNotNull(blobContainerClient);
-        Assert.IsTrue(await blobContainerClient.ExistsAsync());
-    }
+        [TestMethod]
+        public async Task GetBlobContainerClient()
+        {
+            var blobContainerClient = _unitOfWork.GetBlobContainerClient("unit-test");
 
-    [TestMethod]
-    public async Task GetBlobsAsync()
-    {
-        await foreach (var blobItem in _unitOfWork.GetBlobsAsync("unit-test"))
-            Assert.IsNotNull(blobItem);
+            Assert.IsNotNull(blobContainerClient);
+            Assert.IsTrue(await blobContainerClient.ExistsAsync());
+        }
+
+        [TestMethod]
+        public async Task GetBlobsAsync()
+        {
+            await foreach (var blobItem in _unitOfWork.GetBlobsAsync("unit-test"))
+                Assert.IsNotNull(blobItem);
+        }
     }
 }

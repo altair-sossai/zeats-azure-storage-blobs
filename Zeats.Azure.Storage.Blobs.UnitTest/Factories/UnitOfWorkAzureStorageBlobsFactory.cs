@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Zeats.Azure.Storage.Blobs.UnitOfWork;
 
-namespace Zeats.Azure.Storage.Blobs.UnitTest.Factories;
-
-public static class UnitOfWorkAzureStorageBlobsFactory
+namespace Zeats.Azure.Storage.Blobs.UnitTest.Factories
 {
-    public static UnitOfWorkAzureStorageBlobs New()
+    public static class UnitOfWorkAzureStorageBlobsFactory
     {
-        var configuration = ConfigurationFactory.New();
-        var connectionString = configuration.GetValue<string>("AzureWebJobsStorage");
+        public static UnitOfWorkAzureStorageBlobs New()
+        {
+            var configuration = ConfigurationFactory.New();
+            var connectionString = configuration.GetValue<string>("AzureWebJobsStorage");
 
-        return new UnitOfWorkAzureStorageBlobs(connectionString);
+            return new UnitOfWorkAzureStorageBlobs(connectionString);
+        }
     }
 }

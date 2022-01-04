@@ -4,29 +4,30 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Zeats.Azure.Storage.Blobs.Extensions;
 
-namespace Zeats.Azure.Storage.Blobs.UnitOfWork;
-
-public class UnitOfWorkAzureStorageBlobs
+namespace Zeats.Azure.Storage.Blobs.UnitOfWork
 {
-    private readonly BlobServiceClient _blobServiceClient;
-
-    public UnitOfWorkAzureStorageBlobs(string connectionString)
+    public class UnitOfWorkAzureStorageBlobs
     {
-        _blobServiceClient = new BlobServiceClient(connectionString);
-    }
+        private readonly BlobServiceClient _blobServiceClient;
 
-    public async Task<BlobContainerClient> CreateBlobContainerIfNotExistsAsync(string blobContainerName, PublicAccessType publicAccessType = PublicAccessType.None)
-    {
-        return await _blobServiceClient.CreateBlobContainerIfNotExistsAsync(blobContainerName, publicAccessType);
-    }
+        public UnitOfWorkAzureStorageBlobs(string connectionString)
+        {
+            _blobServiceClient = new BlobServiceClient(connectionString);
+        }
 
-    public BlobContainerClient GetBlobContainerClient(string blobContainerName)
-    {
-        return _blobServiceClient.GetBlobContainerClient(blobContainerName);
-    }
+        public async Task<BlobContainerClient> CreateBlobContainerIfNotExistsAsync(string blobContainerName, PublicAccessType publicAccessType = PublicAccessType.None)
+        {
+            return await _blobServiceClient.CreateBlobContainerIfNotExistsAsync(blobContainerName, publicAccessType);
+        }
 
-    public AsyncPageable<BlobItem> GetBlobsAsync(string blobContainerName)
-    {
-        return _blobServiceClient.GetBlobsAsync(blobContainerName);
+        public BlobContainerClient GetBlobContainerClient(string blobContainerName)
+        {
+            return _blobServiceClient.GetBlobContainerClient(blobContainerName);
+        }
+
+        public AsyncPageable<BlobItem> GetBlobsAsync(string blobContainerName)
+        {
+            return _blobServiceClient.GetBlobsAsync(blobContainerName);
+        }
     }
 }
