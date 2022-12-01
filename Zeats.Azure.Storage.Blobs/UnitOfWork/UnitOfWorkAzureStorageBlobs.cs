@@ -4,30 +4,29 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Zeats.Azure.Storage.Blobs.Extensions;
 
-namespace Zeats.Azure.Storage.Blobs.UnitOfWork
+namespace Zeats.Azure.Storage.Blobs.UnitOfWork;
+
+public class UnitOfWorkAzureStorageBlobs
 {
-    public class UnitOfWorkAzureStorageBlobs
+    private readonly BlobServiceClient _blobServiceClient;
+
+    public UnitOfWorkAzureStorageBlobs(string connectionString)
     {
-        private readonly BlobServiceClient _blobServiceClient;
+        _blobServiceClient = new BlobServiceClient(connectionString);
+    }
 
-        public UnitOfWorkAzureStorageBlobs(string connectionString)
-        {
-            _blobServiceClient = new BlobServiceClient(connectionString);
-        }
+    public async Task<BlobContainerClient> CreateBlobContainerIfNotExistsAsync(string blobContainerName, PublicAccessType publicAccessType = PublicAccessType.None)
+    {
+        return await _blobServiceClient.CreateBlobContainerIfNotExistsAsync(blobContainerName, publicAccessType);
+    }
 
-        public async Task<BlobContainerClient> CreateBlobContainerIfNotExistsAsync(string blobContainerName, PublicAccessType publicAccessType = PublicAccessType.None)
-        {
-            return await _blobServiceClient.CreateBlobContainerIfNotExistsAsync(blobContainerName, publicAccessType);
-        }
+    public BlobContainerClient GetBlobContainerClient(string blobContainerName)
+    {
+        return _blobServiceClient.GetBlobContainerClient(blobContainerName);
+    }
 
-        public BlobContainerClient GetBlobContainerClient(string blobContainerName)
-        {
-            return _blobServiceClient.GetBlobContainerClient(blobContainerName);
-        }
-
-        public AsyncPageable<BlobItem> GetBlobsAsync(string blobContainerName)
-        {
-            return _blobServiceClient.GetBlobsAsync(blobContainerName);
-        }
+    public AsyncPageable<BlobItem> GetBlobsAsync(string blobContainerName)
+    {
+        return _blobServiceClient.GetBlobsAsync(blobContainerName);
     }
 }
